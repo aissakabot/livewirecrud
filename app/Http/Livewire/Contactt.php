@@ -6,13 +6,25 @@ use Livewire\Component;
 
 class Contactt extends Component
 {
-    public $data,$name,$email,$selectedId;
+    public $data,$name,$email,$selected_id,$search;
     public $updateMode=false;
     public function render()
     {
-        $this->data=Contact::all();
+        //$this->data=Contact::all();
+        $this->data = Contact::where('name', 'like', '%'.$this->search.'%')
+               ->Orwhere('email', 'like', '%'.$this->search.'%')
+            //   ->Orwhere('gender', 'like', '%'.$this->search.'%')
+                ->get();
         return view('livewire.contactt');
     }
+
+    protected $updatesQueryString = ['search'];
+
+    public function mount()
+    {
+        $this->search = request()->query('search', $this->search);
+    }
+
     private function resetInput(){
         $this->name = null;
         $this->email =null;

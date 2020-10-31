@@ -15,6 +15,9 @@
         </div>
     @endif
 
+    <div style="float:right;"><input type="text" wire:model="search"  class="form-control " placeholder="Search......"></div>
+
+
 
     @if($updateMode)
         @include('livewire.update')
