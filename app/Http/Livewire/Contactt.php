@@ -1,20 +1,19 @@
 <?php
 
 namespace App\Http\Livewire;
-
 use App\Contact;
 use Livewire\Component;
 
-class Contact extends Component
+class Contactt extends Component
 {
     public $data,$name,$email,$selectedId;
     public $updateMode=false;
     public function render()
     {
         $this->data=Contact::all();
-        return view('livewire.contact');
+        return view('livewire.contactt');
     }
-    private function reseInput(){
+    private function resetInput(){
         $this->name = null;
         $this->email =null;
 
@@ -63,3 +62,4 @@ class Contact extends Component
         }
     }
 }
+
